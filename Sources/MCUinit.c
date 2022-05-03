@@ -180,7 +180,7 @@ void (* near const _vect[])(void) @0xFFC0 = { /* Interrupt vector table */
          UNASSIGNED_ISR,               /* Int.no. 10 Vtpm2ch2 (at FFEA)              Unassigned */
          UNASSIGNED_ISR,               /* Int.no.  9 Vtpm2ch1 (at FFEC)              Unassigned */
          UNASSIGNED_ISR,               /* Int.no.  8 Vtpm2ch0 (at FFEE)              Unassigned */
-         TickTimer,                    /* Int.no.  7 Vtpm1ovf (at FFF0)              Unassigned */
+         UNASSIGNED_ISR,                    /* Int.no.  7 Vtpm1ovf (at FFF0)              Unassigned */
          UNASSIGNED_ISR,               /* Int.no.  6 Vtpm1ch2 (at FFF2)              Unassigned */
          UNASSIGNED_ISR,               /* Int.no.  5 Vtpm1ch1 (at FFF4)              Unassigned */
          UNASSIGNED_ISR,               /* Int.no.  4 Vtpm1ch0 (at FFF6)              Unassigned */

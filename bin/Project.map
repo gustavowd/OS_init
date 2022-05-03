@@ -1,5 +1,5 @@
 
-PROGRAM "D:\Freescale\Projetos\OS\bin\Project.abs"
+PROGRAM "C:\users\gustavo\Meus Documentos\Freescale\Projetos\OS_init\bin\Project.abs"
 
 *********************************************************************************************
 TARGET SECTION
@@ -13,7 +13,6 @@ Linker      : SmartLinker V-5.0.37 Build 9279, Oct  7 2009
 FILE SECTION
 ---------------------------------------------------------------------------------------------
 main.c.o                                Model: SMALL,         Lang: ANSI-C
-RTSHC08.C.o (ansiis.lib)                Model: SMALL,         Lang: ANSI-C
 MC9S08QE128.C.o                         Model: SMALL,         Lang: ANSI-C
 Start08.c.o                             Model: SMALL,         Lang: ANSI-C
 MCUinit.c.o                             Model: SMALL,         Lang: ANSI-C
@@ -28,8 +27,8 @@ Entry point: 0x20FB (_Startup)
 _startupData is allocated at 0x2104 and uses 6 Bytes
 extern struct _tagStartup {
   unsigned nofZeroOut     1
-  _Range   pZeroOut       0x300     742
-  _Copy    *toCopyDownBeg 0x2787
+  _Range   pZeroOut       0x300     404
+  _Copy    *toCopyDownBeg 0x22ED
 } _startupData;
 
 *********************************************************************************************
@@ -40,8 +39,8 @@ Section Name                    Size  Type     From       To       Segment
 .init                            132     R     0x2080     0x2103   ROM
 .startData                        26     R     0x2104     0x211D   ROM
 NON_BANKED                         1     R     0x211E     0x211E   ROM
-.text                           1640     R     0x211F     0x2786   ROM
-.copy                              2     R     0x2787     0x2788   ROM
+.text                            462     R     0x211F     0x22EC   ROM
+.copy                              2     R     0x22ED     0x22EE   ROM
 .abs_section_0                     1   N/I        0x0        0x0   .absSeg0
 .abs_section_1                     1   N/I        0x1        0x1   .absSeg1
 .abs_section_2                     1   N/I        0x2        0x2   .absSeg2
@@ -225,12 +224,12 @@ NON_BANKED                         1     R     0x211E     0x211E   ROM
 .abs_section_ffbd                  1     R     0xFFBD     0xFFBD   .absSeg180
 .abs_section_ffbf                  1     R     0xFFBF     0xFFBF   .absSeg181
 .abs_section_ffc0                 64     R     0xFFC0     0xFFFF   .absSeg182
-.bss                              13   R/W      0x300      0x30C   RAM
-.common                          729   R/W      0x30D      0x5E5   RAM
+.bss                               2   R/W      0x300      0x301   RAM
+.common                          402   R/W      0x302      0x493   RAM
 
 Summary of section sizes per section type:
-READ_ONLY (R):         74B (dec:     1867)
-READ_WRITE (R/W):      4E6 (dec:     1254)
+READ_ONLY (R):         2B1 (dec:      689)
+READ_WRITE (R/W):      394 (dec:      916)
 NO_INIT (N/I):          CF (dec:      207)
 
 *********************************************************************************************
@@ -244,28 +243,11 @@ OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 MODULE:                 -- main.c.o --
 - PROCEDURES:
-     main                                      211F      70     112       1   .text       
+     main                                      211F      4B      75       1   .text       
 - VARIABLES:
-     stk1                                       30D      80     128       1   .common     
-     stk2                                       38D      80     128       1   .common     
-     stk3                                       40D      80     128       1   .common     
-     stk4                                       48D      80     128       1   .common     
-     tcb1                                       50D      10      16       1   .common     
-     tcb2                                       51D      10      16       1   .common     
-     tcb3                                       52D      10      16       1   .common     
-     tcb4                                       53D      10      16       1   .common     
-MODULE:                 -- RTSHC08.C.o (ansiis.lib) --
-- PROCEDURES:
-     _PUSH_ARGS_L                              218F      20      32       1   .text       
-     _ENTER_UNARY_L                            21AF      29      41       1   .text       
-     _ENTER_BINARY_L                           21D8      16      22       2   .text       
-     _LADD_k_is_k_plus_j                       21EE      1F      31       1   .text       
-     _LCMP_k_rel_j                             220D      1F      31       1   .text       
-     _LINC                                     222C      16      22       1   .text       
-     _LADD                                     2242       6       6       2   .text       
-     _LCMP                                     2248       6       6       1   .text       
-     _POP32                                    224E      1A      26       3   .text       
-- VARIABLES:
+     stk1                                       302      80     128       1   .common     
+     stk2                                       382      80     128       1   .common     
+     stk3                                       402      80     128       1   .common     
 MODULE:                 -- MC9S08QE128.C.o --
 - PROCEDURES:
 - VARIABLES:
@@ -323,7 +305,7 @@ MODULE:                 -- MC9S08QE128.C.o --
      _KBI2SC                                     3C       1       1       0   .abs_section_3c
      _KBI2PE                                     3D       1       1       0   .abs_section_3d
      _KBI2ES                                     3E       1       1       0   .abs_section_3e
-     _TPM1SC                                     40       1       1       3   .abs_section_40
+     _TPM1SC                                     40       1       1       0   .abs_section_40
      _TPM1C0SC                                   45       1       1       0   .abs_section_45
      _TPM1C1SC                                   48       1       1       0   .abs_section_48
      _TPM1C2SC                                   4B       1       1       0   .abs_section_4b
@@ -426,7 +408,7 @@ MODULE:                 -- MC9S08QE128.C.o --
      _ADCCV                                      14       2       2       0   .abs_section_14
      _SCI1BD                                     20       2       2       0   .abs_section_20
      _TPM1CNT                                    41       2       2       0   .abs_section_41
-     _TPM1MOD                                    43       2       2       1   .abs_section_43
+     _TPM1MOD                                    43       2       2       0   .abs_section_43
      _TPM1C0V                                    46       2       2       0   .abs_section_46
      _TPM1C1V                                    49       2       2       0   .abs_section_49
      _TPM1C2V                                    4C       2       2       0   .abs_section_4c
@@ -460,7 +442,7 @@ MODULE:                 -- Start08.c.o --
      __SEG_END_SSTACK                           300       0       0       1               
 MODULE:                 -- MCUinit.c.o --
 - PROCEDURES:
-     MCU_init                                  2268      85     133       1   .text       
+     MCU_init                                  216A      85     133       1   .text       
      isrVlvd                                   211E       1       1       1   NON_BANKED  
 - VARIABLES:
      NVPROT_INIT                               FFBD       1       1       0   .abs_section_ffbd
@@ -468,75 +450,50 @@ MODULE:                 -- MCUinit.c.o --
      _vect                                     FFC0      40      64       0   .abs_section_ffc0
 MODULE:                 -- port.c.o --
 - PROCEDURES:
-     PrepareStack                              22ED      5D      93       1   .text       
-     SwitchContext                             234A      1A      26       1   .text       
-     init_os_timer                             2364       B      11       1   .text       
-     TickTimer                                 236F      22      34       1   .text       
+     PrepareStack                              21EF      5D      93       1   .text       
+     SwitchContext                             224C      37      55       1   .text       
 - VARIABLES:
-     stk_tmp                                    54D       2       2       9   .common     
+     stk_tmp                                    482       2       2       5   .common     
 MODULE:                 -- os.c.o --
 - PROCEDURES:
-     idle                                      2391       2       2       1   .text       
-     scheduler                                 2393      39      57       3   .text       
-     start_os                                  23CC      24      36       1   .text       
-     delay                                     23F0      3F      63       3   .text       
-     os_inc_and_compare                        242F      83     131       1   .text       
-     InstallTask                               24B2      3C      60       5   .text       
-     sem_init                                  24EE       B      11       1   .text       
-     sem_pend                                  24F9      7A     122       1   .text       
-     sem_post                                  2573      6A     106       1   .text       
-     remove_event                              25DD      32      50       1   .text       
-     RemoveFromList                            260F      A1     161       6   .text       
-     IncludeTaskIntoList                       26B0      5D      93       6   .text       
+     InstallTask                               2283      40      64       3   .text       
 - VARIABLES:
-     it                                         300       1       1       1   .bss        
-     os_time                                    301       4       4       4   .bss        
-     readylist                                  305       4       4       6   .bss        
-     timelist                                   309       4       4       5   .bss        
-     tcb_idle                                   54F      10      16       1   .common     
-     idle_stk                                   55F      80     128       1   .common     
-     current_task                               5DF       2       2       7   .common     
+     ct                                         300       1       1       5   .bss        
+     it                                         301       1       1       5   .bss        
+     TCB                                        484      10      16       8   .common     
 MODULE:                 -- tasks.c.o --
 - PROCEDURES:
-     task1                                     270D      1A      26       1   .text       
-     task2                                     2727      1A      26       1   .text       
-     task3                                     2741      26      38       1   .text       
-     task4                                     2767      20      32       1   .text       
+     task1                                     22C3       E      14       1   .text       
+     task2                                     22D1       E      14       1   .text       
+     task3                                     22DF       E      14       1   .text       
 - VARIABLES:
-     semaf                                      5E1       5       5       3   .common     
 
 *********************************************************************************************
 MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
-  main.c.o                                   576    112      0
-  RTSHC08.C.o (ansiis.lib)                     0    217      0
+  main.c.o                                   384     75      0
   MC9S08QE128.C.o                            207      0      0
   Start08.c.o                                  0    132      0
   MCUinit.c.o                                  0    134     66
-  port.c.o                                     2    164      0
-  os.c.o                                     159    892      0
-  tasks.c.o                                    5    122      0
+  port.c.o                                     2    148      0
+  os.c.o                                      18     64      0
+  tasks.c.o                                    0     42      0
   other                                      512     26      2
 
 *********************************************************************************************
 SECTION USE IN OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 SECTION: ".text"
-  main _PUSH_ARGS_L _ENTER_UNARY_L _ENTER_BINARY_L _LADD_k_is_k_plus_j 
-  _LCMP_k_rel_j _LINC _LADD _LCMP _POP32 MCU_init PrepareStack SwitchContext 
-  init_os_timer TickTimer idle scheduler start_os delay os_inc_and_compare 
-  InstallTask sem_init sem_pend sem_post remove_event RemoveFromList 
-  IncludeTaskIntoList task1 task2 task3 task4 
+  main MCU_init PrepareStack SwitchContext InstallTask task1 task2 task3 
 SECTION: ".bss"
-  it os_time readylist timelist 
+  ct it 
 SECTION: ".init"
   loadByte Init _Startup 
 SECTION: "NON_BANKED"
   isrVlvd 
 SECTION: ".common"
-  stk1 stk2 stk3 stk4 tcb1 tcb2 tcb3 tcb4 stk_tmp tcb_idle idle_stk 
-  current_task semaf 
+  stk1 stk2 stk3 stk_tmp TCB 
 SECTION: ".abs_section_0"
   _PTAD 
 SECTION: ".abs_section_1"
@@ -965,9 +922,9 @@ OBJECT LIST SORTED BY ADDRESS
      _KBI2SC                                     3C       1       1       0   .abs_section_3c
      _KBI2PE                                     3D       1       1       0   .abs_section_3d
      _KBI2ES                                     3E       1       1       0   .abs_section_3e
-     _TPM1SC                                     40       1       1       3   .abs_section_40
+     _TPM1SC                                     40       1       1       0   .abs_section_40
      _TPM1CNT                                    41       2       2       0   .abs_section_41
-     _TPM1MOD                                    43       2       2       1   .abs_section_43
+     _TPM1MOD                                    43       2       2       0   .abs_section_43
      _TPM1C0SC                                   45       1       1       0   .abs_section_45
      _TPM1C0V                                    46       2       2       0   .abs_section_46
      _TPM1C1SC                                   48       1       1       0   .abs_section_48
@@ -1006,23 +963,13 @@ OBJECT LIST SORTED BY ADDRESS
      _LBP                                        7D       1       1       0   .abs_section_7d
      _LB                                         7E       1       1       0   .abs_section_7e
      _LAPAB                                      7F       1       1       0   .abs_section_7f
-     it                                         300       1       1       1   .bss        
-     os_time                                    301       4       4       4   .bss        
-     readylist                                  305       4       4       6   .bss        
-     timelist                                   309       4       4       5   .bss        
-     stk1                                       30D      80     128       1   .common     
-     stk2                                       38D      80     128       1   .common     
-     stk3                                       40D      80     128       1   .common     
-     stk4                                       48D      80     128       1   .common     
-     tcb1                                       50D      10      16       1   .common     
-     tcb2                                       51D      10      16       1   .common     
-     tcb3                                       52D      10      16       1   .common     
-     tcb4                                       53D      10      16       1   .common     
-     stk_tmp                                    54D       2       2       9   .common     
-     tcb_idle                                   54F      10      16       1   .common     
-     idle_stk                                   55F      80     128       1   .common     
-     current_task                               5DF       2       2       7   .common     
-     semaf                                      5E1       5       5       3   .common     
+     ct                                         300       1       1       5   .bss        
+     it                                         301       1       1       5   .bss        
+     stk1                                       302      80     128       1   .common     
+     stk2                                       382      80     128       1   .common     
+     stk3                                       402      80     128       1   .common     
+     stk_tmp                                    482       2       2       5   .common     
+     TCB                                        484      10      16       8   .common     
      _SRS                                      1800       1       1       0   .abs_section_1800
      _SBDFR                                    1801       1       1       0   .abs_section_1801
      _SOPT1                                    1802       1       1       1   .abs_section_1802
@@ -1109,37 +1056,14 @@ OBJECT LIST SORTED BY ADDRESS
      Init                                      208E      6D     109       1   .init       
      _Startup                                  20FB       9       9       1   .init       
      isrVlvd                                   211E       1       1       1   NON_BANKED  
-     main                                      211F      70     112       1   .text       
-     _PUSH_ARGS_L                              218F      20      32       1   .text       
-     _ENTER_UNARY_L                            21AF      29      41       1   .text       
-     _ENTER_BINARY_L                           21D8      16      22       2   .text       
-     _LADD_k_is_k_plus_j                       21EE      1F      31       1   .text       
-     _LCMP_k_rel_j                             220D      1F      31       1   .text       
-     _LINC                                     222C      16      22       1   .text       
-     _LADD                                     2242       6       6       2   .text       
-     _LCMP                                     2248       6       6       1   .text       
-     _POP32                                    224E      1A      26       3   .text       
-     MCU_init                                  2268      85     133       1   .text       
-     PrepareStack                              22ED      5D      93       1   .text       
-     SwitchContext                             234A      1A      26       1   .text       
-     init_os_timer                             2364       B      11       1   .text       
-     TickTimer                                 236F      22      34       1   .text       
-     idle                                      2391       2       2       1   .text       
-     scheduler                                 2393      39      57       3   .text       
-     start_os                                  23CC      24      36       1   .text       
-     delay                                     23F0      3F      63       3   .text       
-     os_inc_and_compare                        242F      83     131       1   .text       
-     InstallTask                               24B2      3C      60       5   .text       
-     sem_init                                  24EE       B      11       1   .text       
-     sem_pend                                  24F9      7A     122       1   .text       
-     sem_post                                  2573      6A     106       1   .text       
-     remove_event                              25DD      32      50       1   .text       
-     RemoveFromList                            260F      A1     161       6   .text       
-     IncludeTaskIntoList                       26B0      5D      93       6   .text       
-     task1                                     270D      1A      26       1   .text       
-     task2                                     2727      1A      26       1   .text       
-     task3                                     2741      26      38       1   .text       
-     task4                                     2767      20      32       1   .text       
+     main                                      211F      4B      75       1   .text       
+     MCU_init                                  216A      85     133       1   .text       
+     PrepareStack                              21EF      5D      93       1   .text       
+     SwitchContext                             224C      37      55       1   .text       
+     InstallTask                               2283      40      64       3   .text       
+     task1                                     22C3       E      14       1   .text       
+     task2                                     22D1       E      14       1   .text       
+     task3                                     22DF       E      14       1   .text       
      NVPROT_INIT                               FFBD       1       1       0   .abs_section_ffbd
      NVOPT_INIT                                FFBF       1       1       0   .abs_section_ffbf
      _vect                                     FFC0      40      64       0   .abs_section_ffc0
@@ -1148,35 +1072,20 @@ OBJECT LIST SORTED BY ADDRESS
 UNUSED-OBJECTS SECTION
 ---------------------------------------------------------------------------------------------
 NOT USED PROCEDURES
-RTSHC08.C.o (ansiis.lib):
-  _PUSH_ARGS_D _ENTER_UNARY_L64 _ENTER_UNARY_L64_4 _ENTER_BINARY_L_RC 
-  _ENTER_BINARY_L_LC _ENTER_BINARY_L64 _ENTER_BINARY_L64_LC 
-  _ENTER_BINARY_L64_RC _IDIVMOD _SPLITSIGN _k_is_k_plus_j_l _k_is_k_plus_j_i 
-  _LSUB_k_is_k_minus_j _LAND_k_is_k_and_j _LOR_k_is_k_or_j _LXOR_k_is_k_xor_j 
-  _LMUL_k_is_k_mul_j _LDIVMOD _NEG_L_HX _ABS_L_HX _SPLITSIGN_L 
-  _LMODU_k_is_k_mod_j _LDIVU_k_is_k_div_j _LMODS_k_is_k_mod_j 
-  _LDIVS_k_is_k_div_j _CMP24_k_rel_j _BMULS _BDIVS _BMODS _IMUL_STAR08 
-  _IDIVS_STAR08 _IDIVU_STAR08 _IMODS_STAR08 _IMODU_STAR08 _IDIVU_8 _IMODU_8 
-  _IASR _ILSR _ILSL _ICMP _LDEC _LNEG _LNOT _LADD_RC _LSUB _LSUB_LC _LSUB_RC 
-  _LAND _LAND_RC _LOR _LOR_RC _LXOR _LXOR_RC _LMUL _LMUL_RC _LDIVS _LDIVS_LC 
-  _LDIVS_RC _LDIVU _LDIVU_LC _LDIVU_RC _LMODS _LMODS_LC _LMODS_RC _LMODU 
-  _LMODU_LC _LMODU_RC _LASR _LLSR _LLSL _LCMP_RC _PUSH_ARGS_24 
-  _ENTER_BINARY_24_RC _ENTER_BINARY_24 _CMP24 _CMP24_RC _COPY _COPY_L _POP64 
-  _STORE32 _STORE64 _SEXT8_32 _SEXT16_32 _CALL_STAR08 _CALL_STAR08_FAR 
-  _Jump_Table_Addr _Jump_Table_Offset _Jump_Table_Header_Addr 
-  _Jump_Table_Header_Offset _Search_Table_16_Addr _Search_Table_16_Offset 
-  _Search_Table_8_Addr _Search_Table_8_Offset _PUSH_CC _POP_CC 
-  _CONV_FAR_TO_NEAR _CONV_FAR_TO_LINEAR _CONV_LINEAR_TO_FAR 
-NOT USED VARIABLES
-RTSHC08.C.o (ansiis.lib):
-  _PowOfTwo_8 _PowOfTwo_16 _PowOfTwo_32 errno 
+port.c.o:
+  init_os_timer 
 os.c.o:
-  ct 
+  idle start_os delay os_inc_and_compare 
+tasks.c.o:
+  task4 
+NOT USED VARIABLES
+os.c.o:
+  os_time idle_stk 
 
 *********************************************************************************************
 COPYDOWN SECTION
 ---------------------------------------------------------------------------------------------
-------- ROM-ADDRESS: 0x2787 ---- SIZE       2 ---
+------- ROM-ADDRESS: 0x22ED ---- SIZE       2 ---
 Filling bytes inserted
  0000
 
@@ -1185,39 +1094,16 @@ OBJECT-DEPENDENCIES SECTION
 ---------------------------------------------------------------------------------------------
 Init                      USES _startupData loadByte 
 _Startup                  USES __SEG_END_SSTACK Init main 
-main                      USES MCU_init tcb1 task1 stk1 InstallTask tcb2 task2 
-                                stk2 tcb3 task3 stk3 tcb4 task4 stk4 start_os 
-_ENTER_BINARY_L           USES _PUSH_ARGS_L 
-_LINC                     USES _ENTER_UNARY_L 
-_LADD                     USES _ENTER_BINARY_L _LADD_k_is_k_plus_j 
-_LCMP                     USES _ENTER_BINARY_L _LCMP_k_rel_j 
+main                      USES MCU_init task1 stk1 InstallTask task2 stk2 
+                                task3 stk3 TCB stk_tmp 
 MCU_init                  USES _SOPT1 _SPMSC1 _SPMSC2 _SPMSC3 _ICSTRM _ICSSC 
                                 _ICSC1 _ICSC2 _SCGC1 _SCGC2 _PTASE _PTBSE _PTCSE 
                                 _PTDSE _PTESE _PTFSE _PTGSE _PTHSE _PTJSE _PTADS 
                                 _PTBDS _PTCDS _PTDDS _PTEDS _PTFDS _PTGDS _PTHDS 
                                 _PTJDS 
-SwitchContext             USES stk_tmp current_task scheduler 
-init_os_timer             USES _TPM1SC _TPM1MOD 
-TickTimer                 USES _TPM1SC os_inc_and_compare stk_tmp current_task 
-                                scheduler 
-scheduler                 USES readylist current_task 
-start_os                  USES tcb_idle idle idle_stk InstallTask 
-                                init_os_timer scheduler stk_tmp 
-delay                     USES current_task os_time _LADD _POP32 readylist 
-                                RemoveFromList timelist IncludeTaskIntoList 
-os_inc_and_compare        USES timelist os_time _LINC _POP32 _LCMP 
-                                RemoveFromList readylist IncludeTaskIntoList remove_event 
-InstallTask               USES PrepareStack readylist IncludeTaskIntoList it 
-sem_pend                  USES current_task os_time _LADD _POP32 readylist 
-                                RemoveFromList IncludeTaskIntoList timelist 
-sem_post                  USES RemoveFromList timelist readylist 
-                                IncludeTaskIntoList 
-remove_event              USES RemoveFromList 
-task1                     USES delay 
-task2                     USES delay 
-task3                     USES semaf sem_init delay sem_post 
-task4                     USES semaf sem_pend 
-_vect                     USES TickTimer isrVlvd SwitchContext _Startup 
+SwitchContext             USES stk_tmp ct TCB it 
+InstallTask               USES PrepareStack it TCB 
+_vect                     USES isrVlvd SwitchContext _Startup 
 
 *********************************************************************************************
 DEPENDENCY TREE
@@ -1229,67 +1115,15 @@ DEPENDENCY TREE
  |  +- MCU_init            
  |  |    
  |  +- task1               
- |  |  | 
- |  |  +- delay               
- |  |     | 
- |  |     +- _LADD               
- |  |     |  | 
- |  |     |  +- _ENTER_BINARY_L     
- |  |     |  |  | 
- |  |     |  |  +- _PUSH_ARGS_L        
- |  |     |  |       
- |  |     |  +- _LADD_k_is_k_plus_j 
- |  |     |       
- |  |     +- _POP32              
- |  |     |    
- |  |     +- RemoveFromList      
- |  |     |    
- |  |     +- IncludeTaskIntoList 
- |  |          
+ |  |    
  |  +- InstallTask         
  |  |  | 
  |  |  +- PrepareStack        
- |  |  |    
- |  |  +- IncludeTaskIntoList  (see above)
- |  |     
+ |  |       
  |  +- task2               
- |  |  | 
- |  |  +- delay                (see above)
- |  |     
+ |  |    
  |  +- task3               
- |  |  | 
- |  |  +- sem_init            
- |  |  |    
- |  |  +- delay                (see above)
- |  |  |  
- |  |  +- sem_post            
- |  |     | 
- |  |     +- RemoveFromList       (see above)
- |  |     |  
- |  |     +- IncludeTaskIntoList  (see above)
- |  |        
- |  +- task4               
- |  |  | 
- |  |  +- sem_pend            
- |  |     | 
- |  |     +- _LADD                (see above)
- |  |     |  
- |  |     +- _POP32               (see above)
- |  |     |  
- |  |     +- RemoveFromList       (see above)
- |  |     |  
- |  |     +- IncludeTaskIntoList  (see above)
- |  |        
- |  +- start_os            
- |     | 
- |     +- idle                
- |     |    
- |     +- InstallTask          (see above)
- |     |  
- |     +- init_os_timer       
- |     |    
- |     +- scheduler           
- |          
+ |       
  +- _Startup            
     | 
     +- Init                
@@ -1300,38 +1134,10 @@ DEPENDENCY TREE
        
  _vect               
  | 
- +- TickTimer           
- |  | 
- |  +- os_inc_and_compare  
- |  |  | 
- |  |  +- _LINC               
- |  |  |  | 
- |  |  |  +- _ENTER_UNARY_L      
- |  |  |       
- |  |  +- _POP32               (see above)
- |  |  |  
- |  |  +- _LCMP               
- |  |  |  | 
- |  |  |  +- _ENTER_BINARY_L      (see above)
- |  |  |  |  
- |  |  |  +- _LCMP_k_rel_j       
- |  |  |       
- |  |  +- RemoveFromList       (see above)
- |  |  |  
- |  |  +- IncludeTaskIntoList  (see above)
- |  |  |  
- |  |  +- remove_event        
- |  |     | 
- |  |     +- RemoveFromList       (see above)
- |  |        
- |  +- scheduler            (see above)
- |     
  +- isrVlvd             
  |    
  +- SwitchContext       
- |  | 
- |  +- scheduler            (see above)
- |     
+ |    
  +- _Startup             (see above)
     
 *********************************************************************************************
@@ -1340,6 +1146,6 @@ STATISTIC SECTION
 
 ExeFile:
 --------
-Number of blocks to be downloaded: 6
-Total size of all blocks to be downloaded: 1867
+Number of blocks to be downloaded: 7
+Total size of all blocks to be downloaded: 689
 
